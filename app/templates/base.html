@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <link rel="shortcut icon" href="https://flask.palletsprojects.com/en/1.1.x/_static/flask-icon.png">
     {% if title %}
     <title>{{ title }} - Microblog</title>
     {% else %}
@@ -15,6 +16,7 @@
         {% if current_user.is_anonymous %}
         <a href="{{ url_for('login') }}">Login</a>
         {% else %}
+        <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
         <a href="{{ url_for('logout') }}">Logout</a>
         {% endif %}
     </div>

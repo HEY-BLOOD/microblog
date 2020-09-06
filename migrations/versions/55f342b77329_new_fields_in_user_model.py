@@ -1,8 +1,8 @@
-"""posts table
+"""new fields in user model
 
-Revision ID: e98de5b92a0c
-Revises: fb18d8dc6849
-Create Date: 2020-08-29 16:39:39.863767
+Revision ID: 55f342b77329
+Revises: 
+Create Date: 2020-09-06 22:36:17.901409
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e98de5b92a0c'
-down_revision = 'fb18d8dc6849'
+revision = '55f342b77329'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -23,6 +23,8 @@ def upgrade():
     sa.Column('username', sa.String(length=64), nullable=True),
     sa.Column('email', sa.String(length=120), nullable=True),
     sa.Column('password_hash', sa.String(length=128), nullable=True),
+    sa.Column('about_me', sa.String(length=140), nullable=True),
+    sa.Column('last_seen', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_user_email'), 'user', ['email'], unique=True)
